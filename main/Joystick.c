@@ -1,5 +1,7 @@
 #include "Joystick.h"
+
 USB_JoystickReport_Input_t ReportData;
+
 // Configures hardware and peripherals, such as the USB peripherals.
 void SetupHardware(void) {
   // We need to disable watchdog if enabled by bootloader/fuses.

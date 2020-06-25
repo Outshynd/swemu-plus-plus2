@@ -17,21 +17,28 @@ class General {
   /// Handles LUFA related USB tasks
   void handleUSB();
 
+  void Init();
+
   /// Delay added to avoid startup issues
   void setupDelay();
 
   bool PressOneButton(int button, unsigned long pressDuration, unsigned long waitDuration);
+  void PressButton(int button);
+  void PressButton(int button, unsigned long pressDuration);
   bool PressTwoButtons(int buttonOne, int buttonTwo, unsigned long pressDuration, unsigned long waitDuration);
   bool LeftJoystick(int joystickXVal, int joystickYVal, unsigned long joystickDuration, unsigned long waitDuration);
+  bool LeftJoystick(int joyXVal, int joyYVal, unsigned long holdDuration);
   bool LeftJoystickOneButton(int joystickXVal, int joystickYVal, int button, unsigned long joystickDuration, unsigned long waitDuration);
   bool LeftJoystickTwoButtons(int joystickXVal, int joystickYVal, int buttonOne, int buttonTwo, unsigned long joystickDuration, unsigned long waitDuration);
   bool RightJoystick(int joystickXVal, int joystickYVal, unsigned long joystickDuration, unsigned long waitDuration);
+  bool RightJoystick(int joyXVal, int joyYVal, unsigned long holdDuration);
   bool RightJoystickOneButton(int joystickXVal, int joystickYVal, int button, unsigned long joystickDuration, unsigned long waitDuration);
   bool RightJoystickTwoButtons(int joystickXVal, int joystickYVal, int buttonOne, int buttonTwo, unsigned long joystickDuration, unsigned long waitDuration);
   bool BothJoysticks(int leftJoystickXVal, int leftJoystickYVal, int rightJoystickXVal, int rightJoystickYVal, unsigned long joystickDuration, unsigned long waitDuration);
   bool BothJoysticksOneButton(int leftJoystickXVal, int leftJoystickYVal, int rightJoystickXVal, int rightJoystickYVal, int button, unsigned long joystickDuration, unsigned long waitDuration);
   bool BothJoysticksTwoButtons(int leftJoystickXVal, int leftJoystickYVal, int rightJoystickXVal, int rightJoystickYVal, int buttonOne, int buttonTwo, unsigned long joystickDuration, unsigned long waitDuration);
   bool Nothing(unsigned long waitDuration);
+  void Sleep(unsigned long  waitDuration);
   
   int STICK_MIN = 0;
   int STICK_CENTER = 128;
@@ -70,13 +77,3 @@ class General {
 };
 
 #endif
-
-
-
-
-
-
-
-
-
-

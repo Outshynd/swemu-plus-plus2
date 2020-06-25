@@ -10,6 +10,16 @@ void General::handleUSB() {
   USB_USBTask();
 }
 
+void General::Init()
+{
+  previousMillis = millis();
+  while(LeftJoystick(STICK_CENTER, STICK_CENTER, 250, 250) == true);
+  while(PressTwoButtons(LB_BUTTON, RB_BUTTON, 250, 500) == true);
+  while(LeftJoystick(STICK_CENTER, STICK_CENTER, 250, 250) == true);
+  while(PressTwoButtons(LB_BUTTON, RB_BUTTON, 250, 500) == true);
+  while(Nothing(1000) == true);
+}
+
 bool General::PressOneButton(int button, unsigned long pressDuration, unsigned long waitDuration) {
   currentMillis = millis();
   if ((currentMillis - previousMillis) < pressDuration) {
@@ -36,6 +46,16 @@ bool General::PressOneButton(int button, unsigned long pressDuration, unsigned l
   }
   handleUSB();
   return true;
+}
+
+void General::PressButton(int button)
+{
+  PressButton(button, 100);
+}
+
+void General::PressButton(int button, unsigned long pressDuration)
+{
+  while(PressOneButton(button, pressDuration, 1) == true);
 }
 
 bool General::PressTwoButtons(int buttonOne, int buttonTwo, unsigned long pressDuration, unsigned long waitDuration) {
@@ -89,6 +109,12 @@ bool General::LeftJoystick(int joystickXVal, int joystickYVal, unsigned long pre
     return false;
   }
   handleUSB();
+  return true;
+}
+
+bool General::LeftJoystick(int joyXVal, int joyYVal, unsigned long holdDuration)
+{
+  while(LeftJoystick(joyXVal, joyYVal, holdDuration, 1) == true);
   return true;
 }
 
@@ -173,6 +199,12 @@ bool General::RightJoystick(int joystickXVal, int joystickYVal, unsigned long pr
   return true;
 }
 
+bool General::RightJoystick(int joyXVal, int joyYVal, unsigned long holdDuration)
+{
+  while(RightJoystick(joyXVal, joyYVal, holdDuration, 1) == true);
+  return true;
+}
+
 bool General::RightJoystickOneButton(int joystickXVal, int joystickYVal, int button, unsigned long pressDuration, unsigned long waitDuration) {
   currentMillis = millis();
   if ((currentMillis - previousMillis) < pressDuration) {  
@@ -245,6 +277,22 @@ bool General::Nothing(unsigned long waitDuration) {
     return true;
 }
 
+void General::Sleep(unsigned long waitDuration) {
+//  unsigned long start = millis();
+//  unsigned long cur = start;
+//    
+//  while(cur - start < waitDuration)
+//  {
+//    cur = millis();
+//    ReportData.LX = STICK_CENTER;
+//    ReportData.LY = STICK_CENTER; 
+//    ReportData.RX = STICK_CENTER;
+//    ReportData.RY = STICK_CENTER; 
+//    handleUSB();
+//  }
+  while(Nothing(waitDuration) == true);
 
+  // currentMillis = millis();
 
-
+  // while (currentMillis - previousMillis < waitDuration)
+}

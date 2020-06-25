@@ -5,6 +5,7 @@
 #include "PokemonEggHatching.h"
 #include "PokemonExtra.h"
 #include "SimpleScripting.h"
+#include "EggHatch.h"
 
 String incoming = "";
 
@@ -27,7 +28,7 @@ void loop() {
   //pokemonEggHatching.eggHatch(8960);
   //pokemonEggHatching.eggHatch(10240);
   //pokemonEggHatching.boxHatch(1);
-  uartScriptSelect();
+  //uartScriptSelect();
     
   //pokemonExtra.boxRelease(5);
   //pokemonExtra.diggerBrothers();
@@ -40,26 +41,35 @@ void loop() {
   //pokemonExtra.championsCup();
 
   //simpleScript();
+
+  //Hatch5120();
+  Hatch10240();
 }
 
 // For writing simple scripts, use this function and call to it in the main. 
 void simpleScript() {
   using namespace simple;
+
+  for (;;)
+  {
+    Up(1000);
+    Nothing(2000);
+  }
   
-  Left(1000);
-  Nothing(1000);
-  Right(1000);
-  Nothing(1000);
-  Up(1000);
-  Nothing(1000);
-  X(1000);
-  Nothing(1000);
-  Y(1000);
-  Nothing(1000);
-  A(1000);
-  Nothing(1000);
-  B(1000);
-  Nothing(1000);
+//  Left(1000);
+//  Nothing(1000);
+//  Right(1000);
+//  Nothing(1000);
+//  Up(1000);
+//  Nothing(1000);
+//  X(1000);
+//  Nothing(1000);
+//  Y(1000);
+//  Nothing(1000);
+//  A(1000);
+//  Nothing(1000);
+//  B(1000);
+//  Nothing(1000);
 }
 
 // Allows the use of a console program to select a script instead of reflashing
@@ -148,5 +158,3 @@ void uartScriptSelect() {
     }
   }
 }
-
-
